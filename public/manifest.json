@@ -1,6 +1,6 @@
 {
-  "short_name": "Av App",
-  "name": "AV",
+  "short_name": "File Upload App",
+  "name": "File Upload App",
   "icons": [
     {
       "src": "maskable.png",

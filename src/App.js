@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import HomePage from './Pages/Home/HomePage';
-import {BrowserRouter,Routes,Route} from "react-router-dom";
+import AddProductPage from './Pages/AddProduct/AddProduct';
 
+
+import {BrowserRouter,Routes,Route} from "react-router-dom";
 
 
 function App() {
@@ -10,23 +11,28 @@ function App() {
 
 
   return (
+    
     <DIV className="App">
-         <div className="app-wrapper">
-          <BrowserRouter>
 
-                <div className="app-content">
-                        <Routes>
-                                    <Route path="/" element={ <HomePage></HomePage>} />
-                        </Routes>
-                </div>
-
-          </BrowserRouter>
+              <BrowserRouter>
 
 
+              <Routes>
+
+                          {/* All product */}
+                          <Route path="/add-product" element={ 
+                            <>
+                                  <AddProductPage/>
+
+                            </>
+                          } />
 
 
+              </Routes>
 
-         </div>
+
+              </BrowserRouter>
+
     </DIV>
   );
 }
@@ -35,16 +41,6 @@ function App() {
 const DIV=styled.div`
     width: 100%;
 
-    .app-wrapper{
-      position: relative; 
-
-      width: 100%;
-      
-      .app-content{
-        width: var(--nav-footer-width);
-        margin: 0 auto; 
-      }
-    }
 
 `;
 

@@ -1,0 +1,81 @@
+
+@import "FlexBox";
+@import "grid";
+
+.display-sm-none{
+    @media (max-width: 576px){
+        display:none;
+    }
+}
+
+.display-md-none{
+    @media (max-width: 768px){
+        display:none;
+    }
+}
+
+
+.display-lg-none{
+    @media (max-width: 992px){
+        display:none;
+    }
+}
+
+.display-xl-none{
+    @media (max-width: 1200px){
+        display:none;
+    }
+}
+
+.display-xxl-none{
+    @media (max-width: 1400px){
+        display:none;
+    }
+}
+
+
+
+// MIN 
+
+.display-sm-none-min{
+    @media (min-width: 576px){
+        display:none;
+    }
+}
+
+.display-md-none-min{
+    @media (min-width: 768px){
+        display:none;
+    }
+}
+
+
+.display-lg-none-min{
+    @media (min-width: 992px){
+        display:none;
+    }
+}
+
+.display-xl-none-min{
+    @media (min-width: 1200px){
+        display:none;
+    }
+}
+
+.display-xxl-non-mine{
+    @media (min-width: 1400px){
+        display:none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

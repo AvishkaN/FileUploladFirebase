@@ -1,0 +1,351 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+
+@import "Base/base";
+@import "WidthAndHeight/width";
+@import "WidthAndHeight/height";
+@import "Fonts/font";
+@import "Fixing/fixing";
+@import "borders/borders";
+@import "Margins/margin";
+@import "MediaQuaries/MediaQuaries";
+@import "Display/Display";
+@import "Animation/Animation";
+@import "Buttons/Button";
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+@font-face {
+    
+    font-family: "Montserrat";
+    /* src: url("./../src/assets/fonts/Montserrat/Montserrat-Regular.ttf"); */
+    src: url("./../../src/assets/fonts/Montserrat/Montserrat-Medium.ttf");
+  }
+
+@font-face {
+    
+    font-family: "Colonna";
+    /* src: url("./../src/assets/fonts/Montserrat/Montserrat-Regular.ttf"); */
+    src: url("./../../src/assets/fonts/COLONNA/COLONNA.ttf");
+  }
+
+
+
+
+
+h1{   
+    font-size: 3rem; 
+}
+
+
+
+
+
+
+.gy-6{
+    --bs-gutter-y: 4rem;
+}
+
+
+.mt-6{
+    margin-top: 7rem!important;
+
+}
+.mt-20{
+    margin-top: 20rem!important;
+
+}
+.mt-22{
+    margin-top: 22rem!important;
+
+}
+.mt-0-5-{
+    margin-top: -0.5rem;
+
+}
+.mt-0-4-{
+    margin-top: -0.4rem;
+
+}
+
+
+
+
+.font-light{
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.font-family-cursive{
+    font-family: cursive !important;
+}
+
+
+
+
+
+
+.display-inline{   
+    display: inline !important;
+}
+
+.display-inline-block{   
+    display: inline-block !important;
+}
+
+.background-hover:hover{
+    background: var(--color-grey-2);
+}
+
+@media(max-width:600px){     
+    .background-hover:hover{
+        background: inherit;
+    }
+}
+
+
+
+
+
+.box-shadow-normal{
+    box-shadow: 0 2px 16px 0 rgba(0,0,0,0.1);
+}
+
+.box-shadow-normal-hover{
+    transition: all .2s;
+    &:hover{
+
+        box-shadow: -1px 3px 11px 3px rgba(0, 0 ,0, 0.34);
+    }
+}
+
+
+
+
+.background-primary{
+    background-color: var(--color-primary);
+}
+.background-secondary{
+    background-color: var(--color-secondary);
+}
+.background-white{
+    background-color: var(--color-white);
+}
+.background-transparent{
+    background-color: transparent;
+}
+.background-black{
+    background-color: var(--color-black);
+}
+.background-yellow{
+    background-color: var(--color-yellow);
+}
+.background-aqua{
+    background-color: var(--color-aqua);
+}
+.background-green{
+    background-color: var(--color-green);
+}
+.background-red{
+    background-color: var(--color-red);
+}
+
+.background-image{
+    // background-image: linear-gradient(to right bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.2)),url(${props => props.resturantBannerImg});
+    // background-size: cover;
+    // background-position: 48% 47%;
+    // border-radius: 10px; 
+}
+
+
+.background-transparent{
+    background-color: transparent;
+}
+
+
+
+
+.text-color-primary{
+    color: var(--color-primary);
+}
+.text-color-secondary{
+    color: var(--color-secondary);
+}
+
+.text-color-grey{
+    color: var(--color-grey);
+}
+.text-color-grey-2{
+    color: var(--color-grey-2);
+}
+.text-color-grey-light{
+    color: var(--color-light-grey);
+}
+.text-color-grey-ori{
+    color: var(--color-grey-ori);
+}
+
+
+.text-color-black{
+    color: var(--color-black);
+}
+
+.text-color-white{
+    color: var(--color-white);
+}
+.text-color-red{  
+    color: var(--color-red);
+}
+
+.text-color-link{  
+    color: var(--color-link);
+}
+.text-color-ccc{  
+    color: var(--color-ccc);
+}
+
+
+.text-right{
+    text-align: right;
+}
+.text-left{ 
+    text-align: left;
+}
+
+
+.limit-text-line-2{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+            line-clamp: 2; 
+    -webkit-box-orient: vertical;
+}
+
+
+.limit-text-line-2-max-width-sm{
+    
+    @media(max-width:576px){     
+        display: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* number of lines to show */
+                line-clamp: 2; 
+        -webkit-box-orient: vertical;
+    }
+
+}
+
+
+
+.overfloy-y-hidden{
+    overflow-y: hidden;
+}
+
+
+.hide-scroll-bar::-webkit-scrollbar {  
+    width: 0 !important;   /* hide scroll bar  */
+}
+
+
+
+.input{
+    border: none;
+    /* background: transparent;    */
+}
+.input:focus{
+    outline: none;
+}
+
+.textarea{ 
+    background: transparent;
+
+}
+.textarea:focus{
+    outline: none;
+}
+
+a{
+    color: inherit;
+}
+
+
+.a:hover{
+    /* color: inherit; */
+}
+
+.a{
+    text-decoration: none;
+    /* color: inherit; */
+}
+
+.a:active{  
+    color: inherit;
+}
+
+
+.li{
+    list-style: none;
+}
+
+.cursor-p{
+    cursor: pointer;
+}
+
+
+::-moz-selection { /* Code for Firefox */
+    background-color: var(--color-primary);
+    color: #ffff; 
+    transition: all .1s; 
+}
+
+::selection {
+      background-color: var(--color-primary);
+    color:#ffff ;   
+    transition: all .1s; 
+}
+
+
+.high-light-text{
+    font-weight: bold;
+    font-size: 20rem;
+    color:var(--color-black);
+
+}
+
+
+
+
+@media   (max-width: 1329px) {   
+       
+    :root {    
+        --page-content-width: 84%;   
+    }
+}
+@media   (max-width: 1030px) {   
+       
+    :root {     
+        --page-content-width: 94%;   
+    }
+}
+
+
+@media   (max-width: 383px) {   
+       
+    html {       
+        font-size: 59.5%;
+    }
+}
+
+@media   (max-width: 330px) {   
+       
+    html {       
+        font-size: 50.5%;
+    }
+}
+
+
+
