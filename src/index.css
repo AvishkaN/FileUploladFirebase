@@ -1,0 +1,143 @@
+/* ---------------CSS DEFUALT START------------------------ */
+
+
+
+@font-face {font-family: "augustina";
+    src: url("./../src/assets/fonts/augustina/web/259f7b3564f8d7024e8defba0830331d.eot"); /* IE9*/
+    src: url("./../src/assets/fonts/augustina/web/259f7b3564f8d7024e8defba0830331d.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("./../src/assets/fonts/augustina/web/259f7b3564f8d7024e8defba0830331d.woff2") format("woff2"), /* chrome、firefox */
+    url("./../src/assets/fonts/augustina/web/259f7b3564f8d7024e8defba0830331d.woff") format("woff"), /* chrome、firefox */
+    url("./../src/assets/fonts/augustina/web/259f7b3564f8d7024e8defba0830331d.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("./../src/assets/fonts/augustina/web/259f7b3564f8d7024e8defba0830331d.svg#augustina") format("svg"); /* iOS 4.1- */
+  }
+
+@font-face {
+    
+    font-family: "Montserrat";
+    /* src: url("./../src/assets/fonts/Montserrat/Montserrat-Regular.ttf"); */
+    src: url("./../src/assets/fonts/Montserrat/Montserrat-Medium.ttf");
+  }
+@font-face {
+    
+    font-family: "Alata";
+    /* src: url("./../src/assets/fonts/Montserrat/Montserrat-Regular.ttf"); */
+    src: url("./../src/assets/fonts/Alata/Alata-Regular.ttf");
+  }
+
+
+
+
+
+
+html{
+    font-size: 6.25%;  /*1px --> 1rem */
+}
+
+*{
+    margin: 0;
+    padding: 0;   
+    overflow-x: hidden;   
+    font-family: Montserrat;      
+    box-sizing: border-box;
+    font-size: 18rem; 
+}
+
+:root {
+    --color-primary: #27AE60;
+    --color-secondary: #8D6767;
+    --color-white: #fff;
+    --color-black: #000;  
+    --color-red: red;   
+
+
+    /* hover */
+
+  
+
+    }
+
+  
+
+
+
+body{
+    font-size: 18rem;
+
+    
+}
+
+
+
+
+h1{   
+    font-size: 30rem; 
+}
+
+
+
+
+.button{
+    cursor: pointer; 
+    border: none;
+
+    color: inherit;        
+    background-color: transparent;   
+    font-size: inherit;
+    font-family: inherit;   
+
+}
+
+
+
+.input{
+    border: none;
+    background: transparent;   
+}
+.input:focus{
+    outline: none;
+}
+
+.textarea{ 
+    background: transparent;
+
+}
+.textarea:focus{
+    outline: none;
+}
+
+.a{
+    text-decoration: none;
+    color: inherit;
+}
+.a:active{  
+    color: inherit;
+}
+
+.cursor-p{
+    cursor: pointer;
+}
+
+
+::-moz-selection { /* Code for Firefox */
+    background-color: var(--color-primary);
+    color: #ffff; 
+    transition: all .1s; 
+}
+
+::selection {
+      background-color: var(--color-primary);
+    color:#ffff ;   
+    transition: all .1s; 
+}
+
+
+.high-light-text{
+    font-weight: bold;
+    font-size: 20rem;
+    color:var(--color-black);
+
+}
+
+
+
+
