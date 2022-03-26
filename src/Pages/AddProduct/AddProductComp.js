@@ -9,6 +9,8 @@ function Comp() {
 
     const formRef=useRef();
     const fileRef=useRef();
+    const selectRef=useRef();
+
     const [imgUrl,setImgUrl]=useState(undefined);
 
     useEffect(()=>{
@@ -34,7 +36,7 @@ function Comp() {
 
     // Add product 
     const submitHandler=(imgUrl)=>{
-        console.log('🚗🚗');
+
 
 
         const data={inputs:[...[formRef.current][0]]};
@@ -43,10 +45,15 @@ function Comp() {
 
 
         const newObj=data.inputs.map(input=>{
-            // console.log(input.className, input.value );
-            return [ input.className , input.value ]
+            console.log(input.classList[2]);
+            console.log( input.value );
+            return [ input.classList[2] , input.value ]
         }
         );
+
+        console.log(newObj);
+
+        // newObj.shift(); // remove first  elememt because its button input
         newObj.pop(); // remove last elememt because its button input
         
         const newObj2=newObj.map(input=>{
@@ -56,7 +63,8 @@ function Comp() {
         });
 
 
-        lastDataObj.ProductImage=imgUrl;
+        lastDataObj.ProductImage=imgUrl;  
+        lastDataObj.uploladedDocumentType=selectRef.current.value;  
 
 
         AddProduct('_',lastDataObj);
@@ -70,31 +78,41 @@ function Comp() {
     return (
         <DIV className='row '>
 
+                        <div className="col-3 row">
+
+                                    <select name="col-12" id="" ref={selectRef}>
+                                        <option value="image">image</option>
+                                        <option value="video">Video</option>
+                                    </select>
+
+                                  <FIleUpload className='col-12 background-aqu border '  FileInputref={fileRef} ></FIleUpload>
+
+                        </div>
 
 
-            <FIleUpload className='col-3'  FileInputref={fileRef} ></FIleUpload>
+                        <form  className="col display-flex flex-direction-column background-aqua p-3" onSubmit={handlefileUpload}  ref={formRef}>
 
 
-            <form  className="col display-flex flex-direction-column background-aqua p-3" onSubmit={handlefileUpload} ref={formRef}>
+
+                                                <div className="ps-1 font-1-4">Your Name</div>
+                                                <Input    className="Name background-transparent border-grey-light border-radius-5  pt-2  pb-2 ps-3 mt-2 mb-4" placeholder={""} ></Input>
+                                    
+                                    
+                                                <div className="ps-1 font-1-4">Storage</div>
+                                                <Input    className="storage background-transparent border-grey-light border-radius-5  pt-2  pb-2 ps-3 mt-2 mb-4" placeholder={""} ></Input>
+
+
+
+
+                                                <input type="submit" value="Add product" />
+
+
+
+                            </form>
+
+
                  
-                 
-                    {/* <label htmlFor="fname">Product Image:</label>
-                    <input type="file"  className="ProductImage" ref={fileRef} required/> */}
 
-
-                    <div className="ps-1 font-1-4">Your Name</div>
-                    <Input    className="ProductImage background-transparent border-grey-light border-radius-5  pt-2  pb-2 ps-3 mt-2 mb-4" placeholder={""} ></Input>
-
-
-
-                    <label htmlFor="lname">Storage</label>
-                    <input  type="text"  className="storage"/>
-
-
-                    <input type="submit" value="Add product" />
-
-
-            </form> 
         </DIV>
     )
 }

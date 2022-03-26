@@ -96,6 +96,7 @@ export default ProductSlice.reducer;
 
         // timeStamp:firebase.firestore.FieldValue.serverTimestamp(), 
         const docRef = await addDoc(collection(db, "docs"), {...data,timeStamp:new Date().getTime()} ); 
+        console.log(data);
         console.log(docRef);
         
     }catch(err){

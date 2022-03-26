@@ -24,7 +24,7 @@ function FileUpload({className="",FileInputref}) {
   return (
     <DIV className={`${className}`}  onChange={handleChange}>        
 
-        <div className="background- border display-flex display-flex-direction-column align-item-center h-100 justify-content-center">
+        <div className="background-  display-flex display-flex-direction-column align-item-center h-100 justify-content-center">
                
                
                
@@ -36,7 +36,7 @@ function FileUpload({className="",FileInputref}) {
         </div>
 
 
-        <Input FileInputref={FileInputref}  type="file"  border={true} className="p-1 h-100 drag-and-drop  border    opacity-0 cursor-p"  ></Input>
+        <Input FileInputref={FileInputref}  type="file"  border={false} className="p-1 h-100 drag-and-drop  border    opacity-0 cursor-p"  ></Input>
 
 
 

@@ -5,8 +5,7 @@ import styled from 'styled-components';
 function Input(props) {
   
   return (
-         <InputComp  type={props.type}  className={` input ${props.className} `}   placeholder={props.placeholder}  border={props.border} ref={props.FileInputref}  >
-           {  console.log(props)  }
+         <InputComp  type={props.type}  className={` ${props.className} input `}   placeholder={props.placeholder}  border={props.border} ref={props.FileInputref}  >
         </InputComp>
 
   );
