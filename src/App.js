@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import AddProductPage from './Pages/AddProduct/AddProduct';
+import AddProductPage from './Pages/AddProduct/AddProductPage';
 import PreviewPage from './Pages/PreviewPage/PreviewPage';
+import ViewPage from './Pages/ViewsPage/ViewPage';
 import OverlayFull from './Components/Overlay/OverlayFull';
 
 
@@ -28,7 +29,9 @@ function App() {
                                     {/* home */}
                                     <Route path="/" element={ 
                                       <>
-                                            <AddProductPage/>
+                                          { !(UploadSelecter.progressBar == 100) && <AddProductPage/>}
+                                          { (UploadSelecter.progressBar == 100) && <PreviewPage/>}
+                                          { UploadSelecter.viewPage && <ViewPage/>}
 
                                       </>
                                     } />
@@ -37,7 +40,16 @@ function App() {
                                     {/* previewPage */}
                                     <Route path="/preview-page" element={ 
                                       <>
-                                            <PreviewPage/>
+                                      {/* <PreviewPage/> */}
+
+                                      </>
+                                    } />
+
+
+                                    {/* previewPage */}
+                                    <Route path="/view-page" element={ 
+                                      <>
+                                            {/* <ViewPage/> */}
 
                                       </>
                                     } />

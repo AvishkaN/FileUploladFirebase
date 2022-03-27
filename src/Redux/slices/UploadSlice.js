@@ -12,6 +12,8 @@ export const ProductSlice=createSlice({
         showOverlay:false,  
         progressBar:null, 
         CurrentUploadedFileDocument:null, 
+        viewPage:null,  
+
 
     },
     reducers:{
@@ -24,6 +26,12 @@ export const ProductSlice=createSlice({
 
         setProgressBartFN:(state,action)=>{   
             state.progressBar=action.payload; 
+
+        },
+
+        setViewPageFN:(state,action)=>{   
+            state.viewPage=true; 
+            state.progressBar=null; 
 
         },
 
@@ -48,6 +56,7 @@ export const {
                     setProgressBartFN,
                     setShowOverLayFN,
                     setHideOverLayFN,
+                    setViewPageFN,
                     
                                 } =ProductSlice.actions; 
 

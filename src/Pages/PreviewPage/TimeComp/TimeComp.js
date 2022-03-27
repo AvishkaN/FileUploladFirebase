@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { setViewPageFN } from '../../../Redux/slices/UploadSlice';
 
 
 
@@ -10,21 +13,22 @@ function TimeComp({className=""}) {
     const[SecTime,setSecTime]=useState('00');
 
     let interval=useRef();
+    const navigate=useNavigate();
+    const dispatch=useDispatch();
 
     const startTimer=()=>{
 
         let countDownTime=new Date();
 
-                // add minitus and seconds countdown time 
-                countDownTime.setMinutes(countDownTime.getMinutes()+(0));
-                countDownTime.setSeconds(countDownTime.getSeconds()+(10));
+        // add minitus and seconds countdown time 
+        countDownTime.setMinutes(countDownTime.getMinutes()+(0));
+        countDownTime.setSeconds(countDownTime.getSeconds()+(10));
 
         countDownTime=countDownTime.getTime();
 
 
         interval=setInterval(()=>{
 
-            console.log('🚗🚗');
 
             const now=new Date().getTime();
             const distance=countDownTime-now; 
@@ -41,8 +45,10 @@ function TimeComp({className=""}) {
                 clearInterval(interval.current);
                 
                 console.log('clear');
+                dispatch(setViewPageFN())
+
+                // navigate('/view-page');
             }else{
-                console.log(seconds);
                 setMinTime(minutes);
                 setSecTime(seconds);
             }
@@ -66,11 +72,10 @@ function TimeComp({className=""}) {
 
   return (
     <DIV className={`${className}`}>
-        {console.log(MinTime)}
-        {console.log(SecTime)}
         
-            <span className='font-2'>{MinTime}</span>
-            <span className='font-2'>: {SecTime}</span>
+            <span className='font-2'>{`${MinTime}`.padStart(2, '0')}</span>
+            <span className='font-2'>:{`${SecTime}`.padStart(2, '0')}</span>
+            {/* <span className='font-2'>: {SecTime}</span> */}
 
     </DIV>
   );

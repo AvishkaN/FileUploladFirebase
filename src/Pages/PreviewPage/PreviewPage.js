@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 import TimeComp from './TimeComp/TimeComp';
+import PreviewComp from './PreviewComp/PreviewComp';
 import ScrollWindowTop from './../../Functions/DOM/ScrollWindowTop';
 import ClockIcon from '@mui/icons-material/WatchLaterOutlined';
 
 import { useEffect } from 'react';
+import { selectUploads } from '../../Redux/slices/UploadSlice';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -11,11 +15,11 @@ import { useEffect } from 'react';
 
 function PreviewPage({className=""}) {
 
-  useEffect(()=>{
-    
-    //Scroll To Top
-    ScrollWindowTop();
-  },[])
+
+  const UploadSelects=useSelector(selectUploads);
+  const navigate=useNavigate;
+
+ 
 
 
   return (
@@ -27,6 +31,9 @@ function PreviewPage({className=""}) {
                             <ClockIcon className='font-2-4 me-2' ></ClockIcon>
                            <TimeComp></TimeComp>
                     </div>
+
+                    {/* Preview Section */}
+                    <PreviewComp uploadedDocDetails={UploadSelects} className=''></PreviewComp>
 
 
          </div>

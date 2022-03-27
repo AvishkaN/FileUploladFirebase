@@ -5,12 +5,15 @@ import FIleUpload from './../../Components/UI/FileUpload/FIleUpload';
 import {AddProduct, selectUploads, UploadFile} from '../../Redux/slices/UploadSlice';
 import Input from '../../Components/UI/Input/Input';
 import { useDispatch, useSelector } from 'react-redux';
+import {  useNavigate } from 'react-router-dom';
 
 function Comp() {
 
     const formRef=useRef();
     const fileRef=useRef();
     const selectRef=useRef();
+
+    const navigate = useNavigate()
 
     const [fileUrl,setFileUrl]=useState(undefined);
     const dispatch=useDispatch();
@@ -22,6 +25,23 @@ function Comp() {
             submitHandler(fileUrl);
         }
     },[fileUrl]);
+
+
+    function navigateNextPage(){
+
+                if(UploadSelects.progressBar==100){
+                    // navigate('/preview-page');
+                }
+    }
+
+
+
+    useEffect(() => {
+        navigateNextPage();
+        return () => {
+            navigateNextPage({}); // This worked for me
+        };
+      }, [UploadSelects.progressBar]);
 
 
 
