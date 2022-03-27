@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import ProductSlice from './slices/ProductSlice';
+import UploadSlice from './slices/UploadSlice';
 
 export const store = configureStore({
   reducer: {
-    products: ProductSlice,
+    uploads: UploadSlice,
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({

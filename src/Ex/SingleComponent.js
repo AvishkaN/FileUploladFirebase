@@ -2,26 +2,21 @@ import styled from 'styled-components';
 
 
 
-function Singlecomponent({className=""}) {
+function Page({className=""}) {
+
   return (
-    <DIV className={`${className} button`} >
-         <div className="wrapper">
-           
-         </div>
+    <DIV className={`${className}`}>
+       
     </DIV>
   );
 }
 
 
 const DIV=styled.div`
-    width: 100%; 
+    width: 100%;
+    /* margin-top: var(--margin-top-fix-nav);  */  /*only page */
     
-    .wrapper{
-        width: 100%;
-        button{
-
-        }
-    }
+ 
 `;
 
-export default Singlecomponent;
+export default Page;

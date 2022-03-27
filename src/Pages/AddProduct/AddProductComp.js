@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components';
+import Loading from './Loading';
 import FIleUpload from './../../Components/UI/FileUpload/FIleUpload';
-// import {AddProduct, UploadFile} from '../Redux/Slices/ProductSlice';
-import {AddProduct, UploadFile} from '../../Redux/slices/ProductSlice';
+import {AddProduct, selectUploads, UploadFile} from '../../Redux/slices/UploadSlice';
 import Input from '../../Components/UI/Input/Input';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Comp() {
 
@@ -11,14 +12,16 @@ function Comp() {
     const fileRef=useRef();
     const selectRef=useRef();
 
-    const [imgUrl,setImgUrl]=useState(undefined);
+    const [fileUrl,setFileUrl]=useState(undefined);
+    const dispatch=useDispatch();
+    const UploadSelects=useSelector(selectUploads);
 
     useEffect(()=>{
 
-        if(imgUrl){
-            submitHandler(imgUrl);
+        if(fileUrl){
+            submitHandler(fileUrl);
         }
-    },[imgUrl]);
+    },[fileUrl]);
 
 
 
@@ -27,7 +30,7 @@ function Comp() {
 
         const file=fileRef.current.files[0];
 
-        UploadFile(`_`,file,setImgUrl);   // sent file and use selector
+        UploadFile(dispatch,file,setFileUrl);   // sent file and use selector
 
 
         
@@ -63,11 +66,11 @@ function Comp() {
         });
 
 
-        lastDataObj.ProductImage=imgUrl;  
-        lastDataObj.uploladedDocumentType=selectRef.current.value;  
+        lastDataObj.uploadedFile=imgUrl;  
+        lastDataObj.uploladedFileType=selectRef.current.value;  
 
 
-        AddProduct('_',lastDataObj);
+        AddProduct(dispatch,lastDataObj);
 
         // handlefileUpload();  /// photo file upload
     };
@@ -76,7 +79,7 @@ function Comp() {
 
 
     return (
-        <DIV className='row '>
+        <DIV className='row  p-3'>
 
                         <div className="col-3 row">
 
@@ -90,16 +93,23 @@ function Comp() {
                         </div>
 
 
-                        <form  className="col display-flex flex-direction-column background-aqua p-3" onSubmit={handlefileUpload}  ref={formRef}>
+                        <form  className="col display-flex flex-direction-column background-aqu " onSubmit={handlefileUpload}  ref={formRef}>
 
 
 
-                                                <div className="ps-1 font-1-4">Your Name</div>
-                                                <Input    className="Name background-transparent border-grey-light border-radius-5  pt-2  pb-2 ps-3 mt-2 mb-4" placeholder={""} ></Input>
+                                                <div className="ps-1   fw-bold font-1-3   ">Your Name</div>
+                                                <Input    className="Name background-transparent border-grey-light border-radius-5  pt-2   ps-3  pb-2   " placeholder={""} ></Input>
                                     
                                     
-                                                <div className="ps-1 font-1-4">Storage</div>
-                                                <Input    className="storage background-transparent border-grey-light border-radius-5  pt-2  pb-2 ps-3 mt-2 mb-4" placeholder={""} ></Input>
+                                                <div className="ps-1   fw-bold font-1-3   ">Dispay Duration</div>
+                                                <Input    className="DispayDuration background-transparent border-grey-light border-radius-5  pt-2   ps-3  pb-2   " placeholder={""} ></Input>
+                                            
+                                            
+                                                <div className="ps-1   fw-bold font-1-3   ">Start Time</div>
+                                                <Input    className="DispayDuration background-transparent border-grey-light border-radius-5  pt-2   ps-3  pb-2   " placeholder={""} ></Input>
+                                                
+                                                <div className="ps-1   fw-bold font-1-3   ">Expire Time </div>
+                                                <Input    className="DispayDuration background-transparent border-grey-light border-radius-5  pt-2   ps-3  pb-2   " placeholder={""} ></Input>
 
 
 
@@ -107,8 +117,11 @@ function Comp() {
                                                 <input type="submit" value="Add product" />
 
 
+                                                {/* Loding */}
+                                                <Loading className='mt-3'   progressBarWidth={UploadSelects.progressBar}    ></Loading>
 
-                            </form>
+                        
+                        </form>
 
 
                  

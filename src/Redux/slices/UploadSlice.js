@@ -7,81 +7,52 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "@firebase
 
 
 export const ProductSlice=createSlice({
-    name:"Product",
+    name:"Uploads",
     initialState:{
-        Products:[], 
-        Wishlists:[], 
-        loading: false,
-        hasErrors: false,
-        error: null,
-        clickedProduct:null,
+        showOverlay:false,  
+        progressBar:null, 
+        CurrentUploadedFileDocument:null, 
+
     },
     reducers:{
 
-        loadingProducts:(state)=>{   
-            console.log(`loadingProducts....`); 
-            console.log(`@@@@@`);
-
-            state.loading=true; 
-        },
-        loadProductsSucsses:(state,action)=>{   
-            state.Products=action.payload; 
-            state.loading=false; 
-            state.hasErrors=false; 
-            
-        },
-        loadWishListsSucsses:(state,action)=>{   
-            state.Wishlists=action.payload; 
-            
-        },
-        
-        LoadProductError:(state,error)=>{   
-            state.hasErrors=true; 
-            state.loading=false; 
-            state.error=error; 
-
-        },
-        clickedProductFN:(state,action)=>{   
-            state.clickedProduct=action.payload; 
+      
+        setCurrentUploadedFileDocumentFN:(state,action)=>{   
+            state.CurrentUploadedFileDocument=action.payload; 
 
         },
 
-        curUserIsFavouritedFN:(state,action)=>{
-            const {products,userEmail}=action.payload;
+        setProgressBartFN:(state,action)=>{   
+            state.progressBar=action.payload; 
 
-            let newArr=[...products];
-
-            console.log(`🖥🖥🖥`);
-            console.log(products,userEmail);
-
-            const x=newArr.filter((product,i)=>{
-                console.log(i);
-
-                if(product.data.favUsers.includes(userEmail)){
-                    // const obj=newArr[i].thisUserFav=true;
-                    newArr[i]={...newArr[i],thisUserFav:true}
-                }
-            
-            });
-
-            state.Products=newArr; 
+        },
 
 
-            console.log(newArr);
+        setShowOverLayFN:(state,action)=>{   
+            state.showOverlay=true; 
 
+        },
+        setHideOverLayFN:(state,action)=>{   
+            state.showOverlay=false; 
 
+        },
 
-        }
 
     }
 });
 
 
 
-export const {loadingProducts,loadProductsSucsses,LoadProductError,clickedProductFN,curUserIsFavouritedFN,loadWishListsSucsses} =ProductSlice.actions; 
+export const {
+                    setCurrentUploadedFileDocumentFN,
+                    setProgressBartFN,
+                    setShowOverLayFN,
+                    setHideOverLayFN,
+                    
+                                } =ProductSlice.actions; 
 
 //selectors
-export const selectProducts=(state)=>state.products;
+export const selectUploads=(state)=>state.uploads;
 
 export default ProductSlice.reducer;
 
@@ -98,6 +69,8 @@ export default ProductSlice.reducer;
         const docRef = await addDoc(collection(db, "docs"), {...data,timeStamp:new Date().getTime()} ); 
         console.log(data);
         console.log(docRef);
+        dispatch(setCurrentUploadedFileDocumentFN(data))
+
         
     }catch(err){
         console.log(err);
@@ -106,7 +79,7 @@ export default ProductSlice.reducer;
 };
 
 
- export  const UploadFile=async (dispatch=null,file,setImgUrl)=>{
+ export  const UploadFile=async (dispatch=null,file,setFileUrl)=>{
 
     let fileUrl;
 
@@ -129,6 +102,7 @@ export default ProductSlice.reducer;
                   
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     console.log('Upload is ' + progress + '% done');
+                    dispatch(setProgressBartFN(progress))
                     switch (snapshot.state) {
                     case 'paused':
                         console.log('Upload is paused');
@@ -147,7 +121,7 @@ export default ProductSlice.reducer;
                    await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                     console.log('File available at', downloadURL);
                         fileUrl=downloadURL; 
-                        setImgUrl(downloadURL);
+                        setFileUrl(downloadURL);
                     });
                 }
                 );
