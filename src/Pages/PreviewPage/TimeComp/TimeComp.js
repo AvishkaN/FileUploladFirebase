@@ -12,15 +12,22 @@ function TimeComp({className=""}) {
     let interval=useRef();
 
     const startTimer=()=>{
-        // const countDownTime=new Date().getTime()+Math.floor(( (3.10) % (1000*60*60) )*(1000*60));
-        const countDownTime=new Date(5).getTime();
+
+        let countDownTime=new Date();
+
+                // add minitus and seconds countdown time 
+                countDownTime.setMinutes(countDownTime.getMinutes()+(0));
+                countDownTime.setSeconds(countDownTime.getSeconds()+(10));
+
+        countDownTime=countDownTime.getTime();
+
 
         interval=setInterval(()=>{
 
             console.log('🚗🚗');
 
             const now=new Date().getTime();
-            const distance=now-countDownTime;
+            const distance=countDownTime-now; 
 
             
             const minutes=Math.floor((distance % (1000*60*60) )/(1000*60));
@@ -29,11 +36,11 @@ function TimeComp({className=""}) {
             console.log(minutes);
 
             if(distance < 0){
-                console.log('clear');
-
-                // stop our timer
+                
+                // stop  timer
                 clearInterval(interval.current);
-
+                
+                console.log('clear');
             }else{
                 console.log(seconds);
                 setMinTime(minutes);
