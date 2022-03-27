@@ -19,12 +19,12 @@ function PreviewPage({className=""}) {
 
 
   return (
-    <DIV className={`${className} background-aqua`}>
+    <DIV className={`${className} `}>
          <div className="PreviewPage-wrapper">
 
                     {/* display timout */}
-                    <div className="display-flex align-items-center justify-content-center background-yellow ">
-                            <ClockIcon ></ClockIcon>
+                    <div className="display-flex align-items-center justify-content-end  ">
+                            <ClockIcon className='font-2-4 me-2' ></ClockIcon>
                            <TimeComp></TimeComp>
                     </div>
 

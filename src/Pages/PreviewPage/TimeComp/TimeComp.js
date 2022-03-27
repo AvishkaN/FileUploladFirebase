@@ -69,8 +69,8 @@ function TimeComp({className=""}) {
         {console.log(MinTime)}
         {console.log(SecTime)}
         
-            <span className=''>{MinTime}</span>
-            <span className=''>: {SecTime}</span>
+            <span className='font-2'>{MinTime}</span>
+            <span className='font-2'>: {SecTime}</span>
 
     </DIV>
   );
@@ -78,7 +78,7 @@ function TimeComp({className=""}) {
 
 
 const DIV=styled.div`
-    width: 100%;
+    /* width: 100%; */
     /* margin-top: var(--margin-top-fix-nav);  */  /*only TimeComp */
     
  
