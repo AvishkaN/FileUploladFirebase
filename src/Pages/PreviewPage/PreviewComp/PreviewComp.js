@@ -14,7 +14,7 @@ function PreviewComp({className="",uploadedDocDetails}) {
                   {             
                     uploadedDocDetails?.CurrentUploadedFileDocument?.uploladedFileType=='image' && (
 
-                        <div className="col-md-11 col-8  ms-auto me-auto">
+                        <div className="col-md-11 col-10  ms-auto me-auto">
 
                               <img src={uploadedDocDetails.CurrentUploadedFileDocument.uploadedFile} className="w-100 border border-radius-10" alt="" />
                         </div>
