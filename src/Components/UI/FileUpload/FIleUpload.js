@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import Input from '../Input/Input';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import CloudDoneIcon from '@mui/icons-material/CloudDone';
+import CloudUploadIcon from '@mui/icons-material/CloudUploadOutlined';
+import CloudDoneIcon from '@mui/icons-material/InsertDriveFileOutlined';
 import { useState } from 'react';
 
 
 
 function FileUpload({className="",FileInputref}) {
 
-    const[uploadSatate,SetUploadMessage]=useState('Drag and drop images here');
+    const[uploadSatate,SetUploadMessage]=useState('Drag and drop or  Upload');
 
 
 
@@ -28,10 +28,10 @@ function FileUpload({className="",FileInputref}) {
                
                
                
-               {!(uploadSatate.split(' ')[0]=="Uploaded") &&   <CloudUploadIcon className='font-2-5'></CloudUploadIcon>}
-               {uploadSatate.split(' ')[0]=="Uploaded" &&  <CloudDoneIcon className='font-2-5'></CloudDoneIcon>}
+               {!(uploadSatate.split(' ')[0]=="Uploaded") &&   <CloudUploadIcon className='font-2-5 text-color-primary '></CloudUploadIcon>}
+               {uploadSatate.split(' ')[0]=="Uploaded" &&  <CloudDoneIcon className='font-2-5 text-color-primary '></CloudDoneIcon>}
                
-                <div className="" >{uploadSatate}</div>
+                <div className="font-1-4" >{uploadSatate}</div>
 
         </div>
 

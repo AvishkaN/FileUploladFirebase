@@ -13,6 +13,8 @@ export const ProductSlice=createSlice({
         progressBar:null, 
         CurrentUploadedFileDocument:null, 
         viewPage:null,  
+        previewPage:null,  
+
 
 
     },
@@ -31,7 +33,13 @@ export const ProductSlice=createSlice({
 
         setViewPageFN:(state,action)=>{   
             state.viewPage=true; 
-            state.progressBar=null; 
+            state.previewPage=null ; 
+            // state.progressBar=null; 
+
+        },
+        setPreviewPageFN:(state,action)=>{   
+            state.previewPage=action.payload; 
+            // state.progressBar=null; 
 
         },
 
@@ -57,6 +65,7 @@ export const {
                     setShowOverLayFN,
                     setHideOverLayFN,
                     setViewPageFN,
+                    setPreviewPageFN,
                     
                                 } =ProductSlice.actions; 
 
@@ -95,7 +104,7 @@ export default ProductSlice.reducer;
     try{
 
                 const storage = getStorage();
-                const storageRef = ref(storage, `images/${Math.random()} ${file.name}`);
+                const storageRef = ref(storage, `${Math.random()} ${file.name}`);
 
                 const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -111,7 +120,13 @@ export default ProductSlice.reducer;
                   
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     console.log('Upload is ' + progress + '% done');
-                    dispatch(setProgressBartFN(progress))
+                    dispatch(setProgressBartFN(progress));
+                    
+                    if(progress==100){
+                        dispatch(setPreviewPageFN(true));
+
+                    }
+
                     switch (snapshot.state) {
                     case 'paused':
                         console.log('Upload is paused');

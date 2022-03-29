@@ -2,13 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { setViewPageFN } from '../../../Redux/slices/UploadSlice';
+import { setPreviewPageFN, setViewPageFN } from '../../../Redux/slices/UploadSlice';
 
 
 
 
-
-function TimeComp({className=""}) {
+function TimeComp({className="",uploadedDocDetails}) {
     const[MinTime,setMinTime]=useState('00');
     const[SecTime,setSecTime]=useState('00');
 
@@ -46,6 +45,8 @@ function TimeComp({className=""}) {
                 
                 console.log('clear');
                 dispatch(setViewPageFN())
+                // dispatch(setPreviewPageFN(null));
+
 
                 // navigate('/view-page');
             }else{
@@ -59,13 +60,21 @@ function TimeComp({className=""}) {
 
 
     useEffect(()=>{
-        startTimer();
+
+        console.log('🔥🔥',uploadedDocDetails.CurrentUploadedFileDocument);
+
+
+        if(uploadedDocDetails.CurrentUploadedFileDocument){
+            startTimer();   
+
+        }
+
 
         return()=>{
             clearInterval(interval.current);
         }
 
-    },[]);
+    },[uploadedDocDetails.CurrentUploadedFileDocument]);
 
 
  

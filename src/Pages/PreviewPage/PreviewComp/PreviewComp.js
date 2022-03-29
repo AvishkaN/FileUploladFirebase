@@ -5,7 +5,7 @@ import styled from 'styled-components';
 function PreviewComp({className="",uploadedDocDetails}) {
 
   return (
-    <DIV className={`col-8  ms-auto me-auto ${className}`}>
+    <DIV className={`col-11  ms-auto me-auto ${className}`}>
 
 
         <div className=" border-radius-10 mt-4" >

@@ -12,6 +12,7 @@ function Loading({className="",progressBarWidth}) {
 
                             <ProgressBar 
                                         className='border-radius-10  mb-1 ms-1  mt-2  '
+                                        // color={"#0bb5d9"}
                                         color={"red"}
                                         width={progressBarWidth}
                                         barContent={progressBarWidth==100 && <div className='text-color-white text-center'><CheckIcon className=''></CheckIcon></div>}

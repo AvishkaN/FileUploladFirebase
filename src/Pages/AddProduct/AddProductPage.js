@@ -3,13 +3,12 @@ import styled from 'styled-components';
 import AddCardComp from './AddProductComp';
 import LinkComp from '../../Components/UI/Link/Link';
 
-function Comp() {
+function Comp({className}) {
     return (
-        <DIV>
+        <DIV className={`${className}`} >
             <div className="addProductPage-wrapper">
                     <AddCardComp/>
 
-                    <LinkComp to="/preview-page">preview Page</LinkComp>
 
             </div>
 

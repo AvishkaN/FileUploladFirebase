@@ -29,9 +29,21 @@ function App() {
                                     {/* home */}
                                     <Route path="/" element={ 
                                       <>
-                                          { !(UploadSelecter.progressBar == 100) && <AddProductPage/>}
-                                          { (UploadSelecter.progressBar == 100) && <PreviewPage/>}
-                                          { UploadSelecter.viewPage && <ViewPage/>}
+                                          {/* { !(UploadSelecter.progressBar == 100) && <AddProductPage/>}
+                                          { UploadSelecter.CurrentUploadedFileDocument  &&  <PreviewPage/>} */}
+                                          {/* { UploadSelecter.viewPage && <ViewPage/>} */}
+                                          
+
+                                          {/* {console.log('🚗🚗🚗' , `${UploadSelecter.progressBar == 100 ?"display-none":"54"}`)} */}
+                                          
+                                           <AddProductPage className={`${UploadSelecter.progressBar == 100 ?"display-none":""}`}  />
+                                          <PreviewPage  className={`${UploadSelecter.previewPage?"":"display-none"}`} />
+                                          <ViewPage  className={`${UploadSelecter.viewPage ?"":"display-none"}`} />
+                                        
+                                        
+                                        
+                                          {/* <PreviewPage/> */}
+                                          {/* <ViewPage/> */}
 
                                       </>
                                     } />

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import TimeComp from './TimeComp/TimeComp';
 import PreviewComp from './PreviewComp/PreviewComp';
 import ScrollWindowTop from './../../Functions/DOM/ScrollWindowTop';
+import Loader from './../../Components/UI/Loader/Loader';
 import ClockIcon from '@mui/icons-material/WatchLaterOutlined';
 
 import { useEffect } from 'react';
@@ -23,18 +24,25 @@ function PreviewPage({className=""}) {
 
 
   return (
-    <DIV className={`${className} `}>
-         <div className="PreviewPage-wrapper">
+    <DIV className={`${className} background-yello `}>
+         <div className="PreviewPage-wrapper display-flex flex-direction-column  background-aqu ">
 
                     {/* display timout */}
-                    <div className="display-flex align-items-center justify-content-end  ">
+                    <div className="col-12 display-flex  align-items-center justify-content-end  ">
                             <ClockIcon className='font-2-4 me-2' ></ClockIcon>
-                           <TimeComp></TimeComp>
+                           <TimeComp uploadedDocDetails={UploadSelects}></TimeComp>
                     </div>
 
                     {/* Preview Section */}
-                    <PreviewComp uploadedDocDetails={UploadSelects} className=''></PreviewComp>
+                    {/* <PreviewComp uploadedDocDetails={UploadSelects} className=''></PreviewComp> */}
 
+                    {
+                       UploadSelects.CurrentUploadedFileDocument && <PreviewComp uploadedDocDetails={UploadSelects} className=''></PreviewComp>
+                    }
+
+                    {
+                       !UploadSelects.CurrentUploadedFileDocument && <Loader className='mt-auto mb-auto'></Loader>
+                    }
 
          </div>
     </DIV>
@@ -48,8 +56,9 @@ const DIV=styled.div`
     
     .PreviewPage-wrapper{ 
       width: var(--page-content-width);
-        margin-left: auto;
-        margin-right: auto; 
+      margin-left: auto;
+      margin-right: auto; 
+      min-height:100vh;
 
     }
 `;

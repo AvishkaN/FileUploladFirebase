@@ -20,11 +20,11 @@ function ViewsPage({className=""}) {
 
 
 
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    // navigate('/')
+  //   // navigate('/')
     
-  },[UploadSelects.progressBar])
+  // },[UploadSelects.progressBar])
 
   return (
     <DIV className={`${className} `}>
