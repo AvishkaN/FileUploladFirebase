@@ -8,7 +8,7 @@ function Loading({className="",progressBarWidth}) {
     <DIV className={`${className} w-99 ms-auto me-auto `} >
 
 
-                      <div className='text-right font-1-1 '>{progressBarWidth ?progressBarWidth+'%':""}</div>
+                      <div className='text-right font-1-1 '>{progressBarWidth ?Number.parseInt(progressBarWidth)+'%':""}</div>
 
                             <ProgressBar 
                                         className='border-radius-10  mb-1 ms-1  mt-2  '
