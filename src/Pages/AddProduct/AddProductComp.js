@@ -146,7 +146,7 @@ function Comp() {
 
 
 
-                                                     <Button type="submit" className="background-primary col-4 col-md-2 pt-3 pb-2 border-radius-5 text-color-white mt-3 font-1-5 ">Upload</Button>
+                                                     <Button type="submit" className="background-primary col-4 col-md-2 pt-3 pb-2 border-radius-5 text-color-white mt-3 font-1-5 ">{ShowLoadingBar?"Uploading...":"Upload"}</Button>
                                                 {/* <div className="" onClick={()=>setShowLoadingBar(true)}>
                                                 </div> */}
 

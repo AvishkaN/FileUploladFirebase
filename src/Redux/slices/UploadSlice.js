@@ -12,6 +12,9 @@ export const ProductSlice=createSlice({
         showOverlay:false,  
         progressBar:null, 
         CurrentUploadedFileDocument:null, 
+        // CurrentUploadedFileDocument:{
+        //     uploladedFileType:'Video', 
+        // }, 
         viewPage:null,  
         previewPage:null,  
 
