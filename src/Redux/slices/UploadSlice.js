@@ -3,6 +3,7 @@ import { addDoc, collection, doc, setDoc,getDocs ,query, where, getDoc, updateDo
 import { db } from "../../firebase"; 
 
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
+import {child, get, getDatabase, onValue, ref as REF, set } from "@firebase/database";
 
 
 
@@ -12,11 +13,9 @@ export const ProductSlice=createSlice({
         showOverlay:false,  
         progressBar:null, 
         CurrentUploadedFileDocument:null, 
-        // CurrentUploadedFileDocument:{
-        //     uploladedFileType:'Video', 
-        // }, 
         viewPage:null,  
         previewPage:null,  
+        viewCount:null,  
 
 
 
@@ -55,6 +54,12 @@ export const ProductSlice=createSlice({
             state.showOverlay=false; 
 
         },
+        setViewCountFN:(state,action)=>{   
+            state.viewCount=action.payload; 
+
+        },
+
+
 
 
     }
@@ -69,6 +74,7 @@ export const {
                     setHideOverLayFN,
                     setViewPageFN,
                     setPreviewPageFN,
+                    setViewCountFN,
                     
                                 } =ProductSlice.actions; 
 
@@ -88,13 +94,10 @@ export default ProductSlice.reducer;
 
         // timeStamp:firebase.firestore.FieldValue.serverTimestamp(), 
         const docRef = await addDoc(collection(db, "docs"), {...data,timeStamp:new Date().getTime()} ); 
-        console.log(data);
-        console.log(docRef);
         dispatch(setCurrentUploadedFileDocumentFN(data))
 
         
     }catch(err){
-        console.log(err);
     }
 
 };
@@ -122,7 +125,6 @@ export default ProductSlice.reducer;
                     // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
                   
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    console.log('Upload is ' + progress + '% done');
                     dispatch(setProgressBartFN(progress));
                     
                     if(progress==100){
@@ -132,10 +134,8 @@ export default ProductSlice.reducer;
 
                     switch (snapshot.state) {
                     case 'paused':
-                        console.log('Upload is paused');
                         break;
                     case 'running':
-                        console.log('Upload is running');
                         break;
                     }
                 }, 
@@ -146,7 +146,6 @@ export default ProductSlice.reducer;
                     // Handle successful uploads on complete
                     // For instance, get the download URL: https://firebasestorage.googleapis.com/...
                    await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                    console.log('File available at', downloadURL);
                         fileUrl=downloadURL; 
                         setFileUrl(downloadURL);
                     });
@@ -156,6 +155,57 @@ export default ProductSlice.reducer;
 
                 return fileUrl;
         
+    }catch(err){
+     
+    }
+
+};
+
+
+ export  const setViewCount=async (setViewCountState)=>{
+
+
+    try{
+
+        // Read data 
+        
+        const dbRef = REF(getDatabase());
+        get(child(dbRef, `viewsCount`)).then((snapshot) => {
+            if (snapshot.exists()) {
+                // snapshot.val().number+1;
+                        // writeUserData(snapshot.val().number+1);
+                        writeUserData(snapshot.val().number+1);
+
+
+                      
+                        setViewCountState(snapshot.val().number+1);
+
+                   
+
+            } else {
+                console.log("No data available");
+            }
+            }).catch((error) => {
+            console.error(error);
+            });
+
+
+
+
+
+
+
+
+            // Write data 
+        function writeUserData(updatedNum) {
+                const db = getDatabase();
+                set(REF(db, 'viewsCount'), {
+                    number: updatedNum,
+                });
+        }
+
+
+
     }catch(err){
      
     }

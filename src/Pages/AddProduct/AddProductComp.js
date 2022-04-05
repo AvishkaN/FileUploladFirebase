@@ -72,13 +72,10 @@ function Comp() {
 
 
         const newObj=data.inputs.map(input=>{
-            console.log(input.classList[2]);
-            console.log( input.value );
             return [ input.classList[2] , input.value ]
         }
         );
 
-        console.log(newObj);
 
         // newObj.shift(); // remove first  elememt because its button input
         newObj.pop(); // remove last elememt because its button input
@@ -104,7 +101,6 @@ function Comp() {
 
     return (
         <DIV className='display-flex align-item-center'>
-            {console.log(ShowLoadingBar)}
 
             <div className="row col-12 p-3 align-item-cente">
 

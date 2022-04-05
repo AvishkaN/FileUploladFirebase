@@ -23,7 +23,6 @@ function PreviewComp({className="",uploadedDocDetails}) {
 
 
               {/*Video  */}
-              {console.log(uploadedDocDetails?.CurrentUploadedFileDocument?.uploladedFileType=='video')}
                   {             
                     uploadedDocDetails?.CurrentUploadedFileDocument?.uploladedFileType=='video' && (
                         // <div className="text-center mt-5 ">

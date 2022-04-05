@@ -3,8 +3,8 @@ import ScrollWindowTop from '../../Functions/DOM/ScrollWindowTop';
 
 import EyeIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 
-import { useEffect } from 'react';
-import { selectUploads } from '../../Redux/slices/UploadSlice';
+import { useEffect, useState } from 'react';
+import { selectUploads, setViewCount } from '../../Redux/slices/UploadSlice';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,17 +14,19 @@ import { useNavigate } from 'react-router-dom';
 
 function ViewsPage({className=""}) {
 
-  const navigate=useNavigate();
   const UploadSelects=useSelector(selectUploads);
+  const [viewCount,setViewCountState]=useState(null);
 
 
-
-
-  // useEffect(()=>{
-
-  //   // navigate('/')
+  useEffect(()=>{
     
-  // },[UploadSelects.progressBar])
+    if(UploadSelects.viewPage){
+      setViewCount(setViewCountState);
+      
+      
+    }
+  },[UploadSelects]); 
+  
 
   return (
     <DIV className={`${className} `}>
@@ -32,7 +34,7 @@ function ViewsPage({className=""}) {
 
             <div className="display-flex align-items-center justify-content-center mt-3 ">
                   <EyeIcon className='font-2-8 '></EyeIcon>
-                  <div className="ms-2 font-1-8">20 views</div>
+                  <div className="ms-2 font-1-8">{viewCount} views</div>
             </div>
 
          </div>

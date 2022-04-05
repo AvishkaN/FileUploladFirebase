@@ -36,14 +36,12 @@ function TimeComp({className="",uploadedDocDetails}) {
             const minutes=Math.floor((distance % (1000*60*60) )/(1000*60));
             const seconds=Math.floor( (distance % (1000*60) )/1000);
             
-            console.log(minutes);
 
             if(distance < 0){
                 
                 // stop  timer
                 clearInterval(interval.current);
                 
-                console.log('clear');
                 dispatch(setViewPageFN())
                 // dispatch(setPreviewPageFN(null));
 
@@ -61,7 +59,6 @@ function TimeComp({className="",uploadedDocDetails}) {
 
     useEffect(()=>{
 
-        console.log('🔥🔥',uploadedDocDetails.CurrentUploadedFileDocument);
 
 
         if(uploadedDocDetails.CurrentUploadedFileDocument){

@@ -5,22 +5,43 @@ import ViewPage from './Pages/ViewsPage/ViewPage';
 import OverlayFull from './Components/Overlay/OverlayFull';
 
 
-import { useSelector } from 'react-redux';
-import {  selectUploads } from './Redux/slices/UploadSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {  selectUploads, setViewCount } from './Redux/slices/UploadSlice';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
+import { useEffect, useState } from 'react';
 
 
 function App() {   
 
 
 
-  const UploadSelecter=useSelector(selectUploads)
+  const UploadSelecter=useSelector(selectUploads);
+  const dispatch=useDispatch();
+
+
+  // useEffect(()=>{
+    
+  //   if(UploadSelecter.viewPage){
+  //     console.log(UploadSelecter.viewPage);
+  //     setViewCount(dispatch);
+      
+      
+  //   }
+  // },[UploadSelecter]); 
+  
+  
+  // useState(()=>{
+    
+  //   console.log(`👍👍`);
+
+  //   console.log();
+
+  // },[UploadSelecter]);
 
 
   return (
     
     <DIV className="App">
-      {console.log(UploadSelecter)}
 
               <BrowserRouter>
 
@@ -29,16 +50,13 @@ function App() {
                                     {/* home */}
                                     <Route path="/" element={ 
                                       <>
-                                          {/* { !(UploadSelecter.progressBar == 100) && <AddProductPage/>}
-                                          { UploadSelecter.CurrentUploadedFileDocument  &&  <PreviewPage/>} */}
-                                          {/* { UploadSelecter.viewPage && <ViewPage/>} */}
+                                      {/* { console.log(UploadSelecter.viewPage)} */}
                                           
 
-                                          {/* {console.log('🚗🚗🚗' , `${UploadSelecter.progressBar == 100 ?"display-none":"54"}`)} */}
                                           
                                            <AddProductPage className={`${UploadSelecter.progressBar == 100 ?"display-none":""}`}  />
                                           <PreviewPage  className={`${UploadSelecter.previewPage?"":"display-none"}`} />
-                                          <ViewPage  className={`${UploadSelecter.viewPage ?"":"display-none"}`} />
+                                          <ViewPage  className={`${UploadSelecter.viewPage ?"":"display-none"}`} UploadSelecter={UploadSelecter} />
                                         
                                         
                                         
